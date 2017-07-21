@@ -17,7 +17,9 @@ app.use(bodyParser.urlencoded({
     extended: false
 }));
 
-mongoose.connect("mongodb://localhost/urlRepo");
+var connectDb = process.env.MONGODB_URI || "mongodb://localhost/urlRepo";
+
+mongoose.connect(connectDb);
 var db = mongoose.connection;
 
 db.on("error", function(error) {
