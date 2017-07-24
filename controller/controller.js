@@ -49,7 +49,9 @@ module.exports = function (app) {
         });
     });
 
-    app.post("/save", function(req, res) {
+    app.get("/save", function(req, res) {
+
+        var docs = [];
         Articles.find({})
             .populate("notes")
             .exec(function(error, doc) {
@@ -58,6 +60,7 @@ module.exports = function (app) {
                 }
                 else {
                     console.log(doc);
+                    //docs.push(doc);
                 }
             });
     });
