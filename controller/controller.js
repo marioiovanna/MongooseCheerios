@@ -52,7 +52,7 @@ module.exports = function (app) {
     app.get("/save", function(req, res) {
 
         var docs = [];
-        Articles.find({})
+        Articles.find({}).limit(10)
             .populate("notes")
             .exec(function(error, doc) {
                 if (error) {
